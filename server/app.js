@@ -112,10 +112,10 @@ app.post("/addProduct", (req, res) => {
 
 // Update a customer
 app.put("/customers/:id", (req, res) => {
-	const { customer_name, email, phone } = req.body;
+	const { name, email, phone } = req.body;
 	db.query(
 		"UPDATE customers SET customer_name = ?, email = ?, phone = ? WHERE customer_id = ?",
-		[customer_name, email, phone, req.params.id],
+		[name, email, phone, req.params.id],
 		(err, result) => {
 			if (err) throw err;
 			res.send("Customer updated");
