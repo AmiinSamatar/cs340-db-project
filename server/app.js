@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const db = require("./db");
 const cors = require("cors");
+const PORT = 2352;
 
 const app = express();
 app.use(bodyParser.json());
@@ -79,7 +80,7 @@ app.get("/getOrderProducts", (req, res) => {
 app.post("/addCustomer", (req, res) => {
 	const { name, email, phone } = req.body;
 	db.query(
-		"INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)",
+		"INSERT INTO customers (customer_name, email, phone) VALUES (?, ?, ?)",
 		[name, email, phone],
 		(err, result) => {
 			if (err) {
@@ -96,7 +97,7 @@ app.post("/addCustomer", (req, res) => {
 app.post("/addProduct", (req, res) => {
 	const { product_name, product_price, quantity_available } = req.body;
 	db.query(
-		"INSERT INTO products (name, price, quantity_available) VALUES (?, ?, ?)",
+		"INSERT INTO products (product_name, price, quantity_available) VALUES (?, ?, ?)",
 		[product_name, product_price, quantity_available],
 		(err, result) => {
 			if (err) {
@@ -113,7 +114,7 @@ app.post("/addProduct", (req, res) => {
 app.put("/customers/:id", (req, res) => {
 	const { customer_name, email, phone } = req.body;
 	db.query(
-		"UPDATE customers SET name = ?, email = ?, phone = ? WHERE customer_id = ?",
+		"UPDATE customers SET customer_name = ?, email = ?, phone = ? WHERE customer_id = ?",
 		[customer_name, email, phone, req.params.id],
 		(err, result) => {
 			if (err) throw err;
@@ -147,7 +148,9 @@ app.delete("/products/:id", (req, res) => {
 // });
 
 // Start server
-const PORT = 3000;
-app.listen(PORT, () => {
-	console.log(`Server running on port ${PORT}`);
+/*
+	LISTENER
+*/
+app.listen(PORT, function () {            // This is the basic syntax for what is called the 'listener' which receives incoming requests on the specified PORT.
+	console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.')
 });

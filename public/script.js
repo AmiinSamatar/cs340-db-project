@@ -14,7 +14,7 @@ function fetchCustomers() {
 				const row = customerList.insertRow();
 				row.innerHTML = `
                     <td>${customer.customer_id}</td>
-                    <td>${customer.name}</td>
+                    <td>${customer.customer_name}</td>
                     <td>${customer.email}</td>
                     <td>${customer.phone}</td>
                     <td>
@@ -38,7 +38,7 @@ function fetchProducts() {
 				const row = productList.insertRow();
 				row.innerHTML = `
                     <td>${product.product_id}</td>
-                    <td>${product.name}</td>
+                    <td>${product.product_name}</td>
                     <td>${product.price}</td>
                     <td>${product.quantity_available}</td>
                     <td>

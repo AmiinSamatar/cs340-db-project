@@ -4,9 +4,9 @@ const mysql = require("mysql");
 const db = mysql.createConnection({
 	connectionLimit: 10,
 	host: "classmysql.engr.oregonstate.edu",
-	user: "cs340_samatara",
-	password: "0594",
-	database: "cs340_samatara",
+	user: "cs340_amarem",
+	password: "5097",
+	database: "cs340_amarem",
 });
 
 // Connect to the database
